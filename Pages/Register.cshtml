@@ -5,6 +5,61 @@
     Layout = "_Layout";
 }
 
+<style>
+    /* CSS សម្រាប់រៀបទីតាំង icon ភ្នែក */
+    .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    
+    .password-wrapper input {
+        width: 100%;
+        padding-right: 40px; /* ទុកចន្លោះខាងស្ដាំកុំឲ្យអក្សរជាន់លើ icon */
+    }
+    
+    .toggle-password-btn {
+        position: absolute;
+        right: 10px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--text-muted, #888);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    .toggle-password-btn:focus {
+        outline: none;
+    }
+
+    /* CSS សម្រាប់ Radio Buttons ភេទ */
+    .radio-group {
+        display: flex;
+        gap: 20px; /* ចន្លោះរវាងជម្រើសនីមួយៗ */
+        margin-top: 8px;
+    }
+
+    .radio-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400; /* មិនឲ្យអក្សរដិតពេក */
+    }
+
+    .radio-label input[type="radio"] {
+        width: 18px; /* ទំហំតូចល្មម */
+        height: 18px;
+        margin: 0;
+        cursor: pointer;
+        accent-color: #6366f1; /* ពណ៌ពេលចុចជ្រើសរើស (អាចដូរតាមពណ៌ Theme អ្នកបាន) */
+    }
+</style>
+
 <div class="auth-page">
     <div class="auth-card">
         <h2>📝 Register Account </h2>
@@ -18,33 +73,61 @@
         <form method="post">
             <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" name="Name" placeholder="Your full name" required />
+                <input type="text" name="Name" placeholder="Example: Sokhom thangcheng" required />
             </div>
+            
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" name="Email" placeholder="you@example.com" required />
+                <input type="email" name="Email" placeholder="admincheng@portfolio.com" required />
             </div>
+            
+            <!-- បានកែប្រែត្រង់នេះទៅជា Radio -->
             <div class="form-group">
-                <label>Gender</label>
-                <select name="Gender">
-                    <option value="">-- Select Gender  --</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
+                <label>Select Gender :</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="Gender" value="Male" required /> Male
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="Gender" value="Female" /> Female
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="Gender" value="Other" /> Other
+                    </label>
+                </div>
             </div>
+            
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="Password" placeholder="Create a strong password" required />
+                <label>Password 8 Characters</label>
+                <div class="password-wrapper">
+                    <input type="password" name="Password" placeholder="admin123" required />
+                    <button type="button" class="toggle-password-btn" aria-label="Toggle password visibility">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
             </div>
+            
             <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="ConfirmPassword" placeholder="Confirm your password" required />
+                <label>Confirm Password 8 Characters</label>
+                <div class="password-wrapper">
+                    <input type="password" name="ConfirmPassword" placeholder="Example: cehn123***2026" required />
+                    <button type="button" class="toggle-password-btn" aria-label="Toggle password visibility">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
             </div>
+            
             <div class="form-group">
                 <label>Remark <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
                 <input type="text" name="Remark" placeholder="Something about yourself" />
             </div>
+            
             <button type="submit" class="btn-full">Create Account</button>
         </form>
 
@@ -53,3 +136,31 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ស្វែងរកគ្រប់ប៊ូតុងដែលមាន class 'toggle-password-btn'
+            const toggleButtons = document.querySelectorAll('.toggle-password-btn');
+
+            toggleButtons.forEach(function(btn) {
+                btn.addEventListener('click', function () {
+                    // ទាញយកប្រអប់ input ដែលនៅជាប់នឹងប៊ូតុងនេះ
+                    const passwordInput = this.previousElementSibling;
+                    const eyeIcon = this.querySelector('svg');
+
+                    // ពិនិត្យប្រភេទ input រួចប្ដូរ
+                    const isPassword = passwordInput.getAttribute('type') === 'password';
+                    passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+
+                    // ផ្លាស់ប្ដូររូប icon
+                    if (isPassword) {
+                        eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+                    } else {
+                        eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+                    }
+                });
+            });
+        });
+    </script>
+}
