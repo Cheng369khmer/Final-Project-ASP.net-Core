@@ -1,0 +1,65 @@
+@page
+@model MyPortfolio.Pages.Admin.UsersModel
+@{
+    ViewData["Title"] = "Manage Users";
+    Layout = "_Layout";
+}
+
+<div class="admin-layout">
+    <aside class="admin-sidebar">
+        <h3>Admin Panel</h3>
+        <a href="/Admin/Dashboard" class="admin-nav-link">📊 Dashboard</a>
+        <a href="/Admin/Users" class="admin-nav-link active">👥 Manage Users</a>
+        <a href="/" class="admin-nav-link">🌐 View Site</a>
+        <a href="/Logout" class="admin-nav-link" style="color:var(--accent);">🚪 Logout</a>
+    </aside>
+
+    <main class="admin-main">
+        <h2>Manage Users</h2>
+        <p class="subtitle">Total: <strong style="color:var(--primary);">@Model.Users.Count</strong> users in the system</p>
+
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            <div class="alert alert-success">@Model.Message</div>
+        }
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Role</th>
+                        <th>Remark</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Users)
+                    {
+                        <tr>
+                            <td style="color:var(--text-muted);">@user.ID</td>
+                            <td><strong>@user.Name</strong></td>
+                            <td style="color:var(--text-muted); font-size:0.85rem;">@user.Email</td>
+                            <td>@user.Gender</td>
+                            <td><span class="badge @(user.Role == "Admin" ? "badge-admin" : "badge-user")">@user.Role</span></td>
+                            <td style="color:var(--text-muted); font-size:0.85rem;">@user.Remark</td>
+                            <td>
+                                <form method="post" asp-page-handler="Delete" style="display:inline;">
+                                    <input type="hidden" name="id" value="@user.ID" />
+                                    <button type="submit"
+                                        onclick="return confirm('Delete @user.Name?')"
+                                        style="background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); padding:5px 14px; border-radius:8px; cursor:pointer; font-size:0.82rem; font-family:Outfit,sans-serif;">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>

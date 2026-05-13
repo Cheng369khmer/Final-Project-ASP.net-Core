@@ -1,0 +1,75 @@
+@page
+@model MyPortfolio.Pages.Admin.DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_Layout";
+}
+
+<div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <h3>Admin Panel</h3>
+        <a href="/Admin/Dashboard" class="admin-nav-link active">📊 Dashboard</a>
+        <a href="/Admin/Users" class="admin-nav-link">👥 Manage Users</a>
+        <a href="/" class="admin-nav-link">🌐 View Site</a>
+        <a href="/Logout" class="admin-nav-link" style="color:var(--accent); margin-top:auto;">🚪 Logout</a>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+        <h2>Dashboard</h2>
+        <p class="subtitle">Welcome back, <strong style="color:var(--primary);">@Model.AdminName</strong> 👋</p>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-num">@Model.TotalUsers</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">@Model.AdminCount</div>
+                <div class="stat-label">Admins</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">@Model.UserCount</div>
+                <div class="stat-label">Regular Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">@Model.MaleCount</div>
+                <div class="stat-label">Male Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">@Model.FemaleCount</div>
+                <div class="stat-label">Female Users</div>
+            </div>
+        </div>
+
+        <h3 style="color:var(--white); margin-bottom:16px; font-size:1.1rem;">Recent Users</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Role</th>
+                        <th>Remark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Users)
+                    {
+                        <tr>
+                            <td style="color:var(--text-muted);">@user.ID</td>
+                            <td><strong>@user.Name</strong></td>
+                            <td style="color:var(--text-muted);">@user.Email</td>
+                            <td>@user.Gender</td>
+                            <td><span class="badge @(user.Role == "Admin" ? "badge-admin" : "badge-user")">@user.Role</span></td>
+                            <td style="color:var(--text-muted);">@user.Remark</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>

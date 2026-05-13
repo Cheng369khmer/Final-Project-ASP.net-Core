@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — MyPortfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="nav-brand" href="/">
+                <span class="brand-dot"></span>MyPortfolio
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/Privacy" class="nav-link">Privacy</a></li>
+
+                @if (Context.Session.GetString("UserName") != null)
+                {
+                    @* បង្ហាញ Menu ទាំងនេះ លុះត្រាតែមាន Session (Login រួច) *@
+                    <li><a href="/About" class="nav-link">About</a></li>
+                    <li><a href="/Portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="/Resume" class="nav-link">Resume</a></li>
+                    <li><a href="/Contact" class="nav-link">Contact</a></li>
+
+                    @if (Context.Session.GetString("UserRole") == "Admin")
+                    {
+                        <li><a href="/Admin/Dashboard" class="nav-link nav-admin">⚙ Admin</a></li>
+                    }
+
+                    <li class="nav-user-info">
+                        <span class="hello-text">Hello! <strong>@Context.Session.GetString("UserName")</strong></span>
+                    </li>
+                    <li><a href="/Logout" class="nav-link nav-btn btn-logout">Logout</a></li>
+                }
+                else
+                {
+                    @* បង្ហាញតែប៊ូតុង Login និង Register នៅពេលមិនទាន់ Login *@
+                    <li><a href="/Login" class="nav-link nav-btn btn-login">Login</a></li>
+                    <li><a href="/Register" class="nav-link nav-btn btn-register">Register</a></li>
+                }
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>&copy; @DateTime.Now.Year <strong>MyPortfolio</strong> — ASP.NET Core with Cheng-Cyber</p>
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

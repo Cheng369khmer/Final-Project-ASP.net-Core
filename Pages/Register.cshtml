@@ -1,0 +1,55 @@
+@page
+@model MyPortfolio.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <h2>📝 Register Account </h2>
+        <p class="auth-sub">Join us today — it's free!</p>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger">@Model.ErrorMessage</div>
+        }
+
+        <form method="post">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="Name" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="Email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="Gender">
+                    <option value="">-- Select Gender  --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="Password" placeholder="Create a strong password" required />
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="ConfirmPassword" placeholder="Confirm your password" required />
+            </div>
+            <div class="form-group">
+                <label>Remark <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+                <input type="text" name="Remark" placeholder="Something about yourself" />
+            </div>
+            <button type="submit" class="btn-full">Create Account</button>
+        </form>
+
+        <div class="auth-footer">
+            Already have an account? <a href="/Login">Login here</a>
+        </div>
+    </div>
+</div>
