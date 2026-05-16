@@ -121,8 +121,8 @@ D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\refint\MyPortfolio
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\MyPortfolio.pdb
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\MyPortfolio.genruntimeconfig.cache
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\ref\MyPortfolio.dll
-D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\compressed\laik32afsc-{0}-jk6itop4go-jk6itop4go.gz
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\bin\Debug\net10.0\MailKit.dll
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\bin\Debug\net10.0\MimeKit.dll
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\MyPortfolio.sourcelink.json
+D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\compressed\laik32afsc-{0}-yl2qmiu8ym-yl2qmiu8ym.gz

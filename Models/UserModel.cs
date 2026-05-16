@@ -23,5 +23,7 @@ namespace MyPortfolio.Models
         public string Role { get; set; } = "User";
 
         public string Remark { get; set; } = string.Empty;
+        public string? ProfilePhoto { get; set; } 
+        public bool IsActive { get; set; } = true;
     }
 }

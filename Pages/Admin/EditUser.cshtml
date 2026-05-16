@@ -1,0 +1,86 @@
+@page
+@model MyPortfolio.Pages.Admin.EditUserModel
+@{
+    ViewData["Title"] = "Edit User";
+    Layout = "_Layout";
+}
+
+<div class="admin-layout">
+    <aside class="admin-sidebar">
+        <h3>Admin Panel</h3>
+        <a href="/Admin/Dashboard" class="admin-nav-link">📊 Dashboard</a>
+        <a href="/Admin/Users" class="admin-nav-link active">👥 Manage Users</a>
+        <a href="/" class="admin-nav-link">🌐 View Site</a>
+    </aside>
+
+    <main class="admin-main">
+        <h2>Edit User Info</h2>
+        <p class="subtitle">Update user details below</p>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger" style="color: red; margin-bottom: 15px;">@Model.ErrorMessage</div>
+        }
+
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; max-width: 600px;">
+            <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="hidden" asp-for="EditUser.ID" />
+
+                <div>
+                    <label>Name:</label><br />
+                    <input type="text" asp-for="EditUser.Name" required style="width: 100%; padding: 8px;" />
+                </div>
+
+                <div>
+                    <label>Email:</label><br />
+                    <input type="email" asp-for="EditUser.Email" required style="width: 100%; padding: 8px;" />
+                </div>
+
+                <div>
+                    <label>Password (Leave blank to keep old password):</label><br />
+                    <input type="password" asp-for="EditUser.Password" style="width: 100%; padding: 8px;" />
+                </div>
+
+                <div>
+                    <label>Change Profile Photo (Optional):</label><br />
+                    <input type="file" asp-for="PhotoUpload" accept="image/*" style="width: 100%; padding: 8px; background: rgba(0,0,0,0.1);" />
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label>Gender:</label><br />
+                        <select asp-for="EditUser.Gender" style="width: 100%; padding: 8px;">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Role:</label><br />
+                        <select asp-for="EditUser.Role" style="width: 100%; padding: 8px;">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Account Status:</label><br />
+                    <select asp-for="EditUser.IsActive" style="width: 100%; padding: 8px;">
+                        <option value="true">Active (ដំណើរការ)</option>
+                        <option value="false">Inactive (ផ្អាកគណនី)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Remark:</label><br />
+                    <textarea asp-for="EditUser.Remark" style="width: 100%; padding: 8px;"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button type="submit" style="background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Changes</button>
+                    <a href="/Admin/Users" style="background: #4b5563; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>

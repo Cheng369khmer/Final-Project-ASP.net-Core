@@ -5,6 +5,16 @@
     Layout = "_Layout";
 }
 
+<style>
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        object-fit: cover;
+    }
+</style>
+
 <div class="admin-layout">
     <aside class="admin-sidebar">
         <h3>Admin Panel</h3>
@@ -15,51 +25,101 @@
     </aside>
 
     <main class="admin-main">
-        <h2>Manage Users</h2>
-        <p class="subtitle">Total: <strong style="color:var(--primary);">@Model.Users.Count</strong> users in the system</p>
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h2 style="margin-bottom: 5px;">Manage Users</h2>
+                <p class="subtitle" style="margin: 0;">Total: <strong
+                    style="color:var(--primary);">@Model.Users.Count</strong> users</p>
+                </div>
 
-        @if (!string.IsNullOrEmpty(Model.Message))
-        {
-            <div class="alert alert-success">@Model.Message</div>
-        }
+                <form method="get" style="display: flex; gap: 10px; align-items: center; flex-grow: 1; max-width: 400px;">
+                    <input type="text" name="SearchTerm" value="@Model.SearchTerm" placeholder="Search by name or email..."
+                           style="width: 100%; padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); color: white; outline: none;" />
+                    <button type="submit"
+                            style="background: #4b5563; color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; border: none; font-weight: bold;">Search</button>
+                </form>
 
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Gender</th>
-                        <th>Role</th>
-                        <th>Remark</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var user in Model.Users)
-                    {
+                <a href="/Admin/AddUser"
+                   style="background: #3b82f6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">
+                    + Add New User
+                </a>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <div class="alert alert-success">@Model.Message</div>
+            }
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
                         <tr>
-                            <td style="color:var(--text-muted);">@user.ID</td>
-                            <td><strong>@user.Name</strong></td>
-                            <td style="color:var(--text-muted); font-size:0.85rem;">@user.Email</td>
-                            <td>@user.Gender</td>
-                            <td><span class="badge @(user.Role == "Admin" ? "badge-admin" : "badge-user")">@user.Role</span></td>
-                            <td style="color:var(--text-muted); font-size:0.85rem;">@user.Remark</td>
-                            <td>
-                                <form method="post" asp-page-handler="Delete" style="display:inline;">
-                                    <input type="hidden" name="id" value="@user.ID" />
-                                    <button type="submit"
-                                        onclick="return confirm('Delete @user.Name?')"
-                                        style="background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); padding:5px 14px; border-radius:8px; cursor:pointer; font-size:0.82rem; font-family:Outfit,sans-serif;">
-                                        Delete
-                                    </button>
-                                </form>
-                            </td>
+                            <th>#</th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </main>
-</div>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <td style="color:var(--text-muted);">@user.ID</td>
+
+                                <td style="padding: 10px; vertical-align: middle;">
+                                    @{
+                                        string avatarSrc = !string.IsNullOrEmpty(user.ProfilePhoto)
+                                                            ? user.ProfilePhoto
+                                                            : (user.Gender == "Female" ? "/images/avatars/female_default.png"
+                                                            : (user.Gender == "Male" ? "/images/avatars/male_default.png"
+                                                            : "/images/avatars/generic_default.png"));
+                                    }
+                                    <img src="@avatarSrc" class="user-avatar" alt="Photo" />
+                                </td>
+
+                                <td><strong>@user.Name</strong></td>
+                                <td style="color:var(--text-muted); font-size:0.85rem;">@user.Email</td>
+                                <td><span class="badge @(user.Role == "Admin" ? "badge-admin" : "badge-user")">@user.Role</span>
+                                </td>
+
+                                <td>
+                                    @if (user.IsActive)
+                                    {
+                                        <span
+                                            style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; border: 1px solid rgba(16, 185, 129, 0.3);">●
+                                            Active</span>
+                                        }
+                                else
+                                        {
+                                            <span
+                                                style="background: rgba(239, 68, 68, 0.15); color: #fca5a5; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; border: 1px solid rgba(239, 68, 68, 0.3);">●
+                                                Inactive</span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            <div style="display: flex; gap: 8px; align-items: center;">
+                                                <a href="/Admin/EditUser?id=@user.ID"
+                                                   style="background:rgba(59,130,246,0.15); color:#93c5fd; border:1px solid rgba(59,130,246,0.3); padding:5px 14px; border-radius:8px; text-decoration:none; cursor:pointer; font-size:0.82rem;">Edit</a>
+
+                                                @if (user.Role != "Admin")
+                                                {
+                                                    <form method="post" asp-page-handler="Delete" style="display:inline; margin:0;">
+                                                        <input type="hidden" name="id" value="@user.ID" />
+                                                        <button type="submit" onclick="return confirm('Delete @user.Name?')"
+                                                                style="background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); padding:5px 14px; border-radius:8px; cursor:pointer; font-size:0.82rem;">Delete</button>
+                                                    </form>
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>

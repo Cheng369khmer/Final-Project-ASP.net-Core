@@ -19,7 +19,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+// =========================================================
+// បន្ថែមបន្ទាត់នេះ ដើម្បីចុះឈ្មោះ Telegram Service
+builder.Services.AddHttpClient<MyPortfolio.Services.TelegramService>();
+// =========================================================
+
 var app = builder.Build();
+
 
 // Seed database on startup
 using (var scope = app.Services.CreateScope())

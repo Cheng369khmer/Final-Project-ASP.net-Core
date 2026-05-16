@@ -250,22 +250,143 @@ body {
 .resume-item p { color: var(--text-muted); font-size: 0.92rem; margin-top: 4px; }
 
 /* ===== PORTFOLIO GRID ===== */
-.portfolio-item {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: var(--radius); overflow: hidden; transition: var(--transition);
+/* ===== Hero Section (ផ្នែកខាងលើបង្អស់) ===== */
+.page-hero {
+    background: linear-gradient(to bottom, var(--dark2), var(--dark));
+    padding: 100px 20px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
 }
-.portfolio-item:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(108,99,255,0.25); }
-.portfolio-thumb {
-    height: 180px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3.5rem;
-}
-.portfolio-body { padding: 20px; }
-.portfolio-body h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 6px; }
-.portfolio-body p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; }
-.portfolio-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.portfolio-tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; background: rgba(108,99,255,0.12); color: var(--primary); }
 
+.page-hero h1 {
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 15px;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 1px;
+}
+
+.page-hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== Portfolio Section & Grid ===== */
+.section {
+    background-color: var(--dark);
+    padding: 80px 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+.section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* ===== Portfolio Card Item ===== */
+.portfolio-item {
+    background-color: var(--card);
+    border-radius: var(--radius-val);
+    overflow: hidden; /* កាត់គែមរូបភាពកុំឱ្យលៀនចេញពី Card */
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(108, 99, 255, 0.25);
+}
+
+/* ===== Thumbnail (រូបភាព ឬ Icon ខាងលើ) ===== */
+.portfolio-thumb {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem; /* ទំហំ Emoji បើអត់មានរូប */
+    transition: var(--transition);
+    /* ពណ៌ Background ត្រូវបានកំណត់ដោយ Inline CSS របស់អ្នករួចហើយ */
+}
+
+/* ធ្វើឱ្យរូបភាពរីកធំបន្តិចពេល Hover (Zoom effect) */
+.portfolio-item:hover .portfolio-thumb {
+    transform: scale(1.05);
+}
+
+/* ===== Portfolio Body (ផ្នែកអត្ថបទ) ===== */
+.portfolio-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* រុញឱ្យកាតស្មើគ្នា បើទោះជាអត្ថបទខ្លីឬវែង */
+    background-color: var(--card);
+    position: relative;
+    z-index: 2; /* គ្របពីលើ thumbnail ពេល zoom */
+}
+
+.portfolio-body h3 {
+    color: var(--white);
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.portfolio-body p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* ទុកកន្លែងទំនេររុញ Tags ចុះក្រោមឱ្យស្មើគ្នា */
+}
+
+/* ===== Portfolio Tags (ជំនាញ/Tools) ===== */
+.portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.portfolio-tag {
+    background-color: rgba(108, 99, 255, 0.1);
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(108, 99, 255, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* ===== Read More Button ===== */
+.btn-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    align-self: flex-start; /* ឱ្យវានៅខាងឆ្វេង */
+}
+
+.btn-link:hover {
+    color: var(--accent); /* ប្តូរពណ៌ទៅជាផ្កាឈូកពេលយកម៉ៅដាក់ពីលើ */
+    transform: translateX(5px); /* រំកិលទៅស្តាំតិចៗ */
+}
 /* ===== CONTACT ===== */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 .contact-info h3 { font-size: 1.3rem; color: var(--white); margin-bottom: 16px; }
@@ -377,4 +498,248 @@ tr:hover td { background: rgba(108,99,255,0.05); }
     .admin-layout { flex-direction: column; }
     .admin-sidebar { width: 100%; }
     .auth-card { padding: 32px 24px; }
+}
+
+
+
+/* ===== ABOUT PAGE ===== */
+
+
+    /* រចនាបថសម្រាប់ DevOps & Network Theme (Dark Blue & Cyan) */
+    .about-section {
+        background-color: #0d1117; /* ពណ៌ Dark GitHub Style */
+        color: #c9d1d9;
+        padding: 80px 0;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    .about-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .about-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .about-header h1 {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #ffffff;
+    }
+
+    .about-header h1 span {
+        color: #58a6ff; /* ពណ៌ខៀវបែប DevOps */
+    }
+
+    .about-header div {
+        width: 60px;
+        height: 4px;
+        background: #58a6ff;
+        margin: 20px auto;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .about-img-container {
+        position: relative;
+        padding: 10px;
+        border: 2px solid #30363d;
+        border-radius: 12px;
+        background: #161b22;
+    }
+
+    .about-img-container img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+        opacity: 0.9;
+    }
+
+    .about-info h2 {
+        font-size: 1.8rem;
+        color: #ffffff;
+        margin-bottom: 20px;
+    }
+
+    .about-info h2 span {
+        color: #58a6ff;
+    }
+
+    .about-info p {
+        line-height: 1.8;
+        margin-bottom: 25px;
+    }
+
+    /* តារាងព័ត៌មានលម្អិត */
+    .details-list {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 12px;
+        margin-bottom: 30px;
+        background: rgba(255,255,255,0.03);
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .details-label {
+        font-weight: bold;
+        color: #58a6ff;
+    }
+
+    .btn-action {
+        background-color: #238636; /* ពណ៌បៃតងបែប Success/Deploy */
+        color: #ffffff;
+        padding: 12px 25px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 6px;
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+    .btn-action:hover {
+        background-color: #2ea043;
+        transform: translateY(-2px);
+    }
+
+
+    /* ===== Section Team IT CLU ===== */
+.team-section {
+    background-color: var(--dark2); 
+    padding: 80px 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+.team-title {
+    text-align: center;
+    color: var(--white); 
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* គូសបន្ទាត់ពណ៌ស្វាយក្រោមចំណងជើង */
+.team-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.team-card {
+    background-color: var(--card);
+    border-radius: var(--radius-val);
+    padding: 40px 25px 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(108, 99, 255, 0.2);
+}
+
+/* រចនាបថរង្វង់រូបថត */
+.team-avatar {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    padding: 5px; 
+    background-color: var(--dark);
+}
+
+.team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.team-name {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.team-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic; 
+    margin-bottom: 25px;
+    line-height: 1.6;
+    flex-grow: 1; /* រុញឱ្យតួនាទី និង social ស្មើគ្នានៅខាងក្រោម ទោះអត្ថបទខ្លីឬវែង */
+}
+
+/* រចនាបថតួនាទី (ធ្វើជារាងប្រអប់មូល Pill) */
+.team-role {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    background-color: rgba(255, 101, 132, 0.1); /* ពណ៌ផ្កាឈូកព្រាលៗលាយពីក្រោយ */
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 101, 132, 0.2);
+}
+
+/* រចនាបថ Icon បណ្ដាញសង្គម (ធ្វើជារង្វង់មូល) */
+.team-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.team-social a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.team-social a:hover {
+    color: var(--white);
+    background-color: var(--primary);
+    transform: translateY(-3px);
 }

@@ -24,7 +24,7 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/Privacy" class="nav-link">Privacy</a></li>
+                
 
                 @if (Context.Session.GetString("UserName") != null)
                 {
@@ -33,6 +33,7 @@
                     <li><a href="/Portfolio" class="nav-link">Portfolio</a></li>
                     <li><a href="/Resume" class="nav-link">Resume</a></li>
                     <li><a href="/Contact" class="nav-link">Contact</a></li>
+                    <li><a href="/Privacy" class="nav-link">Privacy</a></li>
 
                     @if (Context.Session.GetString("UserRole") == "Admin")
                     {
