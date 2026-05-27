@@ -743,3 +743,226 @@ tr:hover td { background: rgba(108,99,255,0.05); }
     background-color: var(--primary);
     transform: translateY(-3px);
 }
+
+/* ===== Responsive Portfolio Box ===== */
+/*=====================================*/
+
+/* =========================================
+   FULL PORTFOLIO CSS (CLEAN & COOL DARK THEME)
+   ========================================= */
+
+:root {
+    --bg-main: #121420;
+    --bg-card: #1e2136;
+    --text-main: #ffffff;
+    --text-muted: #94a0b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    --primary-color: #6c5ce7; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Kantumruy Pro', sans-serif;
+    line-height: 1.6;
+}
+
+/* --- Hero Section --- */
+.page-hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, rgba(30,33,54,0.5) 0%, rgba(18,20,32,1) 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+.page-hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+.page-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+/* --- Layout & Grid (4 Columns) --- */
+.section { padding: 4rem 2rem; }
+.section-inner { max-width: 1400px; margin: 0 auto; }
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 2rem;
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .card-grid { grid-template-columns: repeat(1, 1fr); } }
+
+/* --- Portfolio Cards --- */
+.portfolio-item {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Thumbnails (រូបភាពខាងលើ) --- */
+.portfolio-thumb-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px; /* កំណត់កម្ពស់ឲ្យស្មើគ្នា */
+    background-color: #171928;
+    overflow: hidden;
+}
+.portfolio-thumb {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ពណ៌ Background កាតនីមួយៗ */
+.bg-mongodb { background: linear-gradient(45deg, #001e2b, #00684a); }
+.bg-bootstrap { background: linear-gradient(45deg, #2b1f42, #7952b3); }
+.bg-linux { background: linear-gradient(45deg, #222222, #444444); }
+.bg-cisco { background: linear-gradient(45deg, #0984e3, #2d3436); } /* ថែមពណ៌ថ្មីសម្រាប់ Cisco */
+
+/* --- Badges (កែអក្សរ Coming Soon កុំឲ្យធំពេក) --- */
+.badge-coming-soon {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 1rem; /* ទំហំអក្សរធម្មតា */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+/* --- Card Content --- */
+.portfolio-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.portfolio-body h3 { margin: 0 0 0.8rem 0; font-size: 1.3rem; color: var(--text-main); }
+.portfolio-body p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; flex-grow: 1; }
+
+/* --- Buttons --- */
+/* ប៊ូតុងអាចចុចបាន (Cisco) */
+.btn-active {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    display: block;
+    text-align: center;
+    box-sizing: border-box;
+    text-decoration: none !important;
+}
+.btn-active:hover {
+    background-color: #5a4bcf;
+    transform: translateY(-2px);
+}
+
+/* ប៊ូតុងមិនអាចចុចបានពណ៌ក្រហម (Coming Soon) */
+.btn-disabled {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #d63031; 
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: not-allowed;
+    opacity: 0.6;
+    font-weight: 500;
+    text-align: center;
+}
+
+
+
+
+/*==== CSS Course Page =====*/
+
+.course-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr; /* ខាងឆ្វេងធំ ខាងស្តាំតូច */
+        gap: 2rem;
+        text-align: left;
+    }
+    .course-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: 2.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .sidebar-card {
+        height: fit-content; /* ឲ្យប្រអប់ខាងស្តាំខ្លីល្មមតាមអក្សរ */
+    }
+    .tag {
+        background: rgba(108, 92, 231, 0.2);
+        color: #a29bfe;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.5rem;
+    }
+    .feature-list li {
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .info-row:last-child { border-bottom: none; }
+    
+    .btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--text-main) !important;
+    }
+    .btn-outline:hover {
+        background-color: rgba(108, 92, 231, 0.1);
+    }
+
+    /* Portfolio Image Box  */
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ជួយកាត់រូបភាពឲ្យពេញប្រអប់ស្អាត ដូច background-size: cover ដែរ */
+    display: block;
+}

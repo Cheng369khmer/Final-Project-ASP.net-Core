@@ -23,13 +23,9 @@ namespace MyPortfolio.Pages
         public string ErrorMessage { get; set; } = string.Empty;
         public string InfoMessage { get; set; } = string.Empty;
 
-        // កូដតេស្ត៖ រាល់ពេល Refresh ទំព័រ Login វានឹងបាញ់សារទៅ Telegram ភ្លាម
-        public async Task OnGetAsync(string? msg)
+        public void OnGet(string? msg)
         {
             if (msg == "registered") InfoMessage = "Account created! Please login.";
-
-            // បាញ់សារតេស្តទៅ Telegram
-            await _telegramService.SendMessageAsync("🔔 Test Message: C# Application របស់អ្នកកំពុងដំណើរការ!");
         }
 
         public async Task<IActionResult> OnPostAsync(string Email, string Password)
@@ -47,10 +43,16 @@ namespace MyPortfolio.Pages
             HttpContext.Session.SetString("UserRole", user.Role);
             HttpContext.Session.SetInt32("UserID", user.ID);
 
+            // ចាប់យក IP Address របស់អ្នកដែល Login ចូល
+            string ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
+            if (ipAddress == "::1") ipAddress = "127.0.0.1 (Localhost)"; // បើថតនៅលើម៉ាស៊ីនខ្លួនឯង
+
+            // បាញ់សារទៅ Telegram រួមទាំង IP Address
             string telegramMsg = $"✅ <b>User Logged In</b>\n" +
                                  $"👤 Name: {user.Name}\n" +
                                  $"📧 Email: {user.Email}\n" +
                                  $"🔑 Role: {user.Role}\n" +
+                                 $"🌐 IP Address: <code>{ipAddress}</code>\n" +
                                  $"⏰ Time: {DateTime.Now:dd/MM/yyyy HH:mm}";
                                  
             await _telegramService.SendMessageAsync(telegramMsg);

@@ -45,11 +45,16 @@ namespace MyPortfolio.Pages
             _db.Users.Add(user);
             await _db.SaveChangesAsync(); 
 
-            // បាញ់សារទៅ Telegram បន្ទាប់ពី Save ចូល DB ជោគជ័យ
+            // ចាប់យក IP Address របស់អ្នកដែលចុះឈ្មោះ
+            string ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
+            if (ipAddress == "::1") ipAddress = "127.0.0.1 (Localhost)"; // បើថតនៅលើម៉ាស៊ីនខ្លួនឯង
+
+            // បាញ់សារទៅ Telegram រួមទាំង IP Address
             string msg = $"🎉 <b>New Registration on CLU System!</b>\n" +
                          $"👤 Name: {Name}\n" +
                          $"📧 Email: {Email}\n" +
                          $"⚧ Gender: {Gender}\n" +
+                         $"🌐 IP Address: <code>{ipAddress}</code>\n" +
                          $"⏰ Time: {DateTime.Now:dd/MM/yyyy HH:mm}";
                          
             await _telegramService.SendMessageAsync(msg);

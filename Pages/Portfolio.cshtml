@@ -10,104 +10,43 @@
 </div>
 
 
+<link rel="stylesheet" href="~/css/style.css" />
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon Courses</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <section class="section">
     <div class="section-inner">
         <div class="card-grid">
+
             <div class="portfolio-item">
-                <a asp-page="/project-details/project-details" style="text-decoration: none;">
-                    <div class="portfolio-thumb" style="
-                        background: linear-gradient(135deg, rgba(108, 99, 255, 0.4), rgba(108, 99, 255, 0.7)), 
-                        url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80');
-                        background-size: cover;
-                        background-position: center;
-                        background-blend-mode: overlay;
-                        border-radius: 8px;
-                        height: 200px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 3rem;
-                        transition: transform 0.3s ease;">
-                        🛒
-                    </div>
-                </a>
-
+                <div class="portfolio-thumb-wrapper">
+                    <img src="~/images/avatars/cisco-cover.jpg" alt="Cisco" class="portfolio-img" />
+                </div>
                 <div class="portfolio-body">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A full-featured online store built with ASP.NET Core.</p>
+                    <h3>មូលដ្ឋានគ្រឹះ Cisco Networking</h3>
+                    <p>Cisco Networking គឺជាថ្នាក់ដែលអាចជួយសម្រួលអោយគេហទំព័រ និង Web Applications ឲ្យមានភាពទាក់ទាញ
+                        និងមានភាពបត់បែនជាមួយ Mobile...</p>
+                        <a href="/Courses/CiscoDetails" class="btn-active">Click here ! 🧭</a>
+                    </div>
+                </div>
 
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">ASP.NET Core</span>
-                        <span class="portfolio-tag">MySQL</span>
-                        <span class="portfolio-tag">C#</span>
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb-wrapper">
+                        <img src="~/images/avatars/clu-cover.png" alt="System CLU" class="portfolio-img" />
+                    </div>
+                    <div class="portfolio-body">
+                        <h3>System CLU</h3>
+                        <p>ថ្នាក់នេះនឹងបង្រៀនអ្នកពីរបៀបបង្កើត Web Application ទំនើបៗ
+                            និងរចនាសម្ព័ន្ធកូដឲ្យមានសុវត្ថិភាពដោយប្រើប្រាស់ C#...</p>
+                            <a href="/Courses/CluDetails" class="btn-active">Click here ! 🧭</a>
+                        </div>
                     </div>
 
-                    <a asp-page="/project-details/project-details" class="btn-link"
-                       style="display: inline-block; margin-top: 15px; color: #6c63ff; font-weight: bold; text-decoration: none;">
-                        Read More →
-                    </a>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-thumb" style="background:linear-gradient(135deg,#ff658422,#ff658444);">📚</div>
-                <div class="portfolio-body">
-                    <h3>School Management System</h3>
-                    <p>Student, teacher, and grade management system with role-based access control.</p>
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">Razor Pages</span>
-                        <span class="portfolio-tag">Entity Framework</span>
-                        <span class="portfolio-tag">MySQL</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-thumb" style="background:linear-gradient(135deg,#22c55e22,#22c55e44);">💬</div>
-                <div class="portfolio-body">
-                    <h3>Real-Time Chat App</h3>
-                    <p>WebSocket-based chat application with rooms and private messaging functionality.</p>
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">SignalR</span>
-                        <span class="portfolio-tag">JavaScript</span>
-                        <span class="portfolio-tag">CSS3</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-thumb" style="background:linear-gradient(135deg,#f59e0b22,#f59e0b44);">📊</div>
-                <div class="portfolio-body">
-                    <h3>Analytics Dashboard</h3>
-                    <p>Business intelligence dashboard with charts, reports, and data visualization.</p>
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">ASP.NET Core</span>
-                        <span class="portfolio-tag">Chart.js</span>
-                        <span class="portfolio-tag">MySQL</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-thumb" style="background:linear-gradient(135deg,#06b6d422,#06b6d444);">🎓</div>
-                <div class="portfolio-body">
-                    <h3>Chenl University System</h3>
-                    <p>Student information and course management system.</p>
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">C#</span>
-                        <span class="portfolio-tag">PHP</span>
-                        <span class="portfolio-tag">SQL</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-thumb" style="background:linear-gradient(135deg,#8b5cf622,#8b5cf644);">✅</div>
-                <div class="portfolio-body">
-                    <h3>Task Management App</h3>
-                    <p>Kanban-style task manager with drag-and-drop, priorities, and team collaboration.</p>
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">JavaScript</span>
-                        <span class="portfolio-tag">ASP.NET Core</span>
-                        <span class="portfolio-tag">CSS3</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>

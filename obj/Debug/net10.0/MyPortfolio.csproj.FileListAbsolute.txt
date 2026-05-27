@@ -125,4 +125,4 @@ D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\bin\Debug\net10.0\BouncyCastle.Crypt
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\bin\Debug\net10.0\MailKit.dll
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\bin\Debug\net10.0\MimeKit.dll
 D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\MyPortfolio.sourcelink.json
-D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\compressed\laik32afsc-{0}-yl2qmiu8ym-yl2qmiu8ym.gz
+D:\cv-fn\MyPortfolio_Full\MyPortfolio-cheng\obj\Debug\net10.0\compressed\laik32afsc-{0}-qgywt3mu7i-qgywt3mu7i.gz
