@@ -3,71 +3,116 @@
 @{
     ViewData["Title"] = "Contact";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<div class="page-hero">
-    <h1>Contact Me</h1>
-    <p>Have a project in mind? Let's work together.</p>
-</div>
+<section class="section contact-page-section">
+    <!-- លុប max-width ចេញ ដើម្បីឱ្យវាលាតពេញ -->
+    <div class="section-inner contact-full-screen">
 
-<section class="section">
-    <div class="section-inner">
         @if (!string.IsNullOrEmpty(Model.SuccessMessage))
         {
-            <div class="alert alert-success" style="max-width:800px;margin:0 auto 24px;">@Model.SuccessMessage</div>
+            <div class="alert alert-success" style="margin-bottom: 24px;">@Model.SuccessMessage</div>
         }
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
         {
-            <div class="alert alert-danger" style="max-width:800px;margin:0 auto 24px;">
+            <div class="alert alert-danger" style="margin-bottom: 24px;">
                 @Model.ErrorMessage
             </div>
         }
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Let's Talk 💬</h3>
-                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
-                    vision.</p>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">💌</div>
-                        <span>sokhomthangcheng19@gmail.com</span>
+
+        <!-- ផ្នែកទី១: ចំណងជើង & ព័ត៌មានទំនាក់ទំនង រួមជាមួយផែនទី -->
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.2rem; color: var(--white); font-weight: 700;">Contact Us</h2>
+        </div>
+
+        <div class="contact-top-grid">
+            <!-- ខាងឆ្វេង: ព័ត៌មានទំនាក់ទំនង -->
+            <div class="contact-info-block">
+                <h3>We Are Here For You</h3>
+                <p class="desc">For more info or inquiry about our products project, and pricing please feel free to get
+                    in touch with us.</p>
+
+                    <div class="contact-item-row">
+                        <span class="icon">📍</span>
+                        <p><strong>Address:</strong> Phnom Penh, Cambodia</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📱</div>
-                        <span>+855 96 5218 700 / +855 71 554 1435</span>
+                    <div class="contact-item-row">
+                        <span class="icon">📲</span>
+                        <p><strong>Phone:</strong> +855 96 5218 700 / +855 71 554 1435</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
-                        <span>Phnom Penh, Cambodia</span>
+                    <div class="contact-item-row">
+                        <span class="icon">💌</span>
+                        <p><strong>Email:</strong> sokhomthangcheng19@gmail.com</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">🎓</div>
-                        <span>Mon – Fri, 5:30 PM – 9:00 PM</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">⏰</div>
-                        <span>Mon – Fri, 7:00 AM – 5:00 PM</span>
+
+                    <div class="social-follow">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons-list">
+                            <a href="https://www.facebook.com/share/18x6txFNgZ/?mibextid=wwXIfr" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+
+                            <a href="https://www.linkedin.com/feed/" target="_blank" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/YourInstagramName" target="_blank" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <a href="https://t.me/Thangcheng_sokhom_IT" target="_blank" title="Telegram">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form method="post">
-                        <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" name="SenderName" placeholder="Sokhom ThangCheng" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" name="SenderEmail" placeholder="sokhomthangcheng19@gmail.com" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Subject</label>
-                            <input type="text" name="Subject" placeholder="Your Subject Here" />
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="Message" placeholder="Tell me about your project..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-full">Send Message 🚀</button>
-                    </form>
+
+                <!-- ខាងស្តាំ: ផែនទី -->
+                <div class="contact-map-block">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Phnom%20Penh,%20Cambodia&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
+
+            <!-- បន្ទាត់ខណ្ឌចែក (Divider) -->
+            <div class="divider-line"></div>
+
+            <!-- ផ្នែកទី២: ទម្រង់បញ្ជូនសារ (Form) -->
+            <div class="contact-bottom-form">
+                <div style="text-align: center; margin-bottom: 40px;">
+                  
+                    <h2 style="font-size: 1.8rem; color: var(--white); font-weight: 700;">We Want To Hear From You</h2>
+                </div>
+
+                <form method="post">
+                    <!-- បែងចែកជា ៣ ជួរ (Name, Email, Subject) -->
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>NAME</label>
+                            <input type="text" name="SenderName" placeholder="Your Name" required />
+                        </div>
+                        <div class="form-group">
+                            <label>EMAIL <span style="color: #ef4444;">*</span></label>
+                            <input type="email" name="SenderEmail" placeholder="Your Email Id" required />
+                        </div>
+                        <div class="form-group">
+                            <label>SUBJECT</label>
+                            <input type="text" name="Subject" placeholder="Subject" />
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 24px;">
+                        <label>MESSAGE <span style="color: #ef4444;">*</span></label>
+                        <textarea name="Message" placeholder="Type your message here" rows="6" required></textarea>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button type="submit" class="btn-submit-centered">Submit</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </section>
